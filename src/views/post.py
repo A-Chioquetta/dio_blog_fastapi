@@ -1,6 +1,6 @@
-from datetime import datetime
+# from datetime import datetime
 
-from pydantic import AwareDatetime, BaseModel  # type: ignore
+from pydantic import AwareDatetime, BaseModel
 
 
 class PostOut(BaseModel):
