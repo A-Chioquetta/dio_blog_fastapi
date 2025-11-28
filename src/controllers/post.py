@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
+from src.exceptions import NotFoundPostError
 from src.schemas.post import PostIn, PostUpdateIn
 from src.security import login_required
 from src.services.post import PostService
