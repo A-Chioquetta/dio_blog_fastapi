@@ -5,19 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from src.controllers import auth, post
-from src.database import database, engine, metadata
 from src.exceptions import NotFoundPostError
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    from src.models.post import posts  # noqa
-
-    await database.connect()
-    metadata.create_all(engine)
-    yield
-    await database.disconnect()
-
 
 tags_metadata = [
     {
@@ -58,7 +46,6 @@ Você será capaz de fazer:
     servers=servers,
     # redoc_url=None,
     # openapi_url=None,
-    lifespan=lifespan,
 )
 
 app.add_middleware(
